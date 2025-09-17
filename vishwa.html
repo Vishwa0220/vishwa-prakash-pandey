@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishwa Prakash Pandey - Tech Superhero 🚀</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fad0c4 100%);
+        }
+
+        .cartoon-character {
+            width: 200px;
+            height: 250px;
+            position: relative;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .cartoon-character:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .character-head {
+            width: 80px;
+            height: 80px;
+            background: #fdbcb4;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto 10px;
+            border: 3px solid #333;
+        }
+
+        .character-eyes {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            right: 20px;
+        }
+
+        .eye {
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            border: 2px solid #333;
+        }
+
+        .pupil {
+            width: 6px;
+            height: 6px;
+            background: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            animation: lookAround 3s infinite;
+        }
+
+        @keyframes lookAround {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(2px, -1px); }
+            50% { transform: translate(-2px, 1px); }
+            75% { transform: translate(1px, 2px); }
+        }
+
+        .character-smile {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 15px;
+            border: 3px solid #333;
+            border-top: none;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .character-body {
+            width: 60px;
+            height: 100px;
+            background: #4a90e2;
+            margin: 0 auto;
+            border-radius: 30px;
+            position: relative;
+            border: 3px solid #333;
+        }
+
+        .character-arms {
+            position: absolute;
+            top: 20px;
+            left: -15px;
+            right: -15px;
+        }
+
+        .arm {
+            width: 30px;
+            height: 8px;
+            background: #fdbcb4;
+            border-radius: 20px;
+            border: 2px solid #333;
+            position: absolute;
+            animation: wave 2s infinite;
+        }
+
+        .arm.left { left: 0; transform-origin: right; }
+        .arm.right { right: 0; transform-origin: left; }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(20deg); }
+        }
+
+        .character-legs {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+
+        .leg {
+            width: 15px;
+            height: 40px;
+            background: #333;
+            border-radius: 0 0 10px 10px;
+            margin: 0 15px;
+        }
+
+        .intro-text {
+            position: absolute;
+            right: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 400px;
+            border: 3px solid #333;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 10px solid transparent;
+            border-right-color: white;
+        }
+
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .tech-icon {
+            position: absolute;
+            font-size: 30px;
+            animation: float 6s infinite linear;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            to {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 50px;
+            color: white;
+            text-shadow: 3px 3px 0px #333;
+            animation: titleBounce 1s ease-in-out;
+        }
+
+        @keyframes titleBounce {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid #333;
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .skill-card:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .skill-card h3 {
+            color: #4a90e2;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 3px solid #333;
+            position: relative;
+            animation: slideIn 0.5s ease-out;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .fun-fact {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            border: 3px solid #333;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .interactive-button {
+            background: #ff6b6b;
+            color: white;
+            border: 3px solid #333;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            font-family: inherit;
+        }
+
+        .interactive-button:hover {
+            background: #ff5252;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            border: 3px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        @media (max-width: 768px) {
+            .intro-text {
+                position: static;
+                margin-top: 30px;
+                right: auto;
+                transform: none;
+                max-width: 90%;
+            }
+            
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+
+            .cartoon-character {
+                width: 150px;
+                height: 200px;
+            }
+
+            .character-head {
+                width: 60px;
+                height: 60px;
+            }
+
+            .character-body {
+                width: 45px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Tech Icons -->
+    <div class="floating-icons">
+        <div class="tech-icon" style="left: 10%; animation-delay: 0s;">🐍</div>
+        <div class="tech-icon" style="left: 20%; animation-delay: 1s;">☁️</div>
+        <div class="tech-icon" style="left: 30%; animation-delay: 2s;">🔐</div>
+        <div class="tech-icon" style="left: 40%; animation-delay: 3s;">🚀</div>
+        <div class="tech-icon" style="left: 50%; animation-delay: 4s;">💻</div>
+        <div class="tech-icon" style="left: 60%; animation-delay: 5s;">🔧</div>
+        <div class="tech-icon" style="left: 70%; animation-delay: 0.5s;">📱</div>
+        <div class="tech-icon" style="left: 80%; animation-delay: 1.5s;">🎯</div>
+        <div class="tech-icon" style="left: 90%; animation-delay: 2.5s;">⚡</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background"></div>
+        <div class="pulse-ring"></div>
+        
+        <div class="hero-content">
+            <div class="cartoon-character" onclick="greetUser()">
+                <div class="character-head">
+                    <div class="character-eyes">
+                        <div class="eye"><div class="pupil"></div></div>
+                        <div class="eye"><div class="pupil"></div></div>
+                    </div>
+                    <div class="character-smile"></div>
+                </div>
+                <div class="character-body">
+                    <div class="character-arms">
+                        <div class="arm left"></div>
+                        <div class="arm right"></div>
+                    </div>
+                </div>
+                <div class="character-legs">
+                    <div class="leg"></div>
+                    <div class="leg"></div>
+                </div>
+            </div>
+
+            <div class="intro-text speech-bubble">
+                <h1 style="color: #4a90e2; margin-bottom: 15px; font-size: 2.5em;" class="title-animation">
+                    Hi! I'm Vishwa! 👋
+                </h1>
+                <h2 style="color: #666; font-size: 1.4em; margin-bottom: 20px;" class="typing-effect">
+                    VP of Technology & Tech Superhero
+                </h2>
+                <p style="margin-bottom: 20px; font-size: 1.1em; line-height: 1.6;">
+                    🚀 <strong>14+ years</strong> of turning coffee into secure, scalable code! 
+                    <br>From cryptography to cloud architecture, I build the digital fortress that keeps the cyber world safe! ☕➡️💻🛡️
+                </p>
+                
+                <div class="stats-container">
+                    <div class="stat-item" onclick="showCustomAlert('🏆 14+ years of hands-on experience in cutting-edge technology!')">
+                        <span class="stat-number">14+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item" onclick="showCustomAlert('☁️ AWS cost optimization expert - I make clouds rain savings!')">
+                        <span class="stat-number">40%</span>
+                        <span class="stat-label">Cost Savings</span>
+                    </div>
+                    <div class="stat-item" onclick="showCustomAlert('🔐 FIPS 140-2 Level 3 certified systems - Fort Knox level security!')">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Secure Systems</span>
+                    </div>
+                    <div class="stat-item" onclick="showCustomAlert('👥 Leading cross-functional teams like a tech conductor!')">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Team Members Led</span>
+                    </div>
+                </div>
+
+                <div class="fun-fact" style="margin: 25px 0;">
+                    🎉 <strong>Fun Fact:</strong> I can debug code faster than I can debug my life - and that's saying something!
+                </div>
+                
+                <div class="cta-buttons">
+                    <button class="interactive-button" onclick="scrollToSection('about')">
+                        🚀 Explore My Journey
+                    </button>
+                    <button class="interactive-button" onclick="scrollToSection('skills')">
+                        💪 See My Powers
+                    </button>
+                    <button class="interactive-button" onclick="surpriseMe()">
+                        🎉 Surprise Me!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="container">
+            <h2 class="section-title">About This Tech Wizard 🧙‍♂️</h2>
+            
+            <div style="background: white; padding: 30px; border-radius: 20px; border: 3px solid #333; max-width: 800px; margin: 0 auto;">
+                <div style="font-size: 1.2em; line-height: 1.6; text-align: center;">
+                    <p style="margin-bottom: 20px;">🎯 <strong>Mission:</strong> Making the digital world safer, one line of code at a time!</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0;">
+                        <div style="text-align: center; padding: 15px;">
+                            <div style="font-size: 3em;">🏆</div>
+                            <strong>14+ Years</strong><br>Tech Excellence
+                        </div>
+                        <div style="text-align: center; padding: 15px;">
+                            <div style="font-size: 3em;">🔐</div>
+                            <strong>Security Expert</strong><br>SOC 2, HIPAA, ISO
+                        </div>
+                        <div style="text-align: center; padding: 15px;">
+                            <div style="font-size: 3em;">☁️</div>
+                            <strong>Cloud Ninja</strong><br>AWS Specialist
+                        </div>
+                        <div style="text-align: center; padding: 15px;">
+                            <div style="font-size: 3em;">🤖</div>
+                            <strong>AI Enthusiast</strong><br>LLMs & Automation
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fun-fact" style="max-width: 600px; margin: 30px auto;">
+                🎮 When I'm not coding, I'm probably traveling, building professional networks, or staying updated with the latest tech trends!
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+        <div class="container">
+            <h2 class="section-title" style="color: #333;">My Super Powers 🦸‍♂️</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <h3>💻 Programming Languages</h3>
+                    <p><strong>Expert Level:</strong> C, C++, Go, Python</p>
+                    <p>I speak fluent code in multiple languages - it's like being multilingual, but nerdier! 🤓</p>
+                </div>
+
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <h3>☁️ Cloud & DevOps</h3>
+                    <p><strong>AWS Wizard:</strong> Cost optimization, scalable architectures</p>
+                    <p><strong>Tools:</strong> Docker, Kubernetes, Jenkins</p>
+                    <p>I make clouds rain efficiency and savings! ⛈️💰</p>
+                </div>
+
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <h3>🔐 Security & Cryptography</h3>
+                    <p><strong>Crypto Expert:</strong> AES, RSA, PKCS#11, HSMs</p>
+                    <p><strong>Compliance:</strong> SOC 2, HIPAA, ISO, FIPS 140-2</p>
+                    <p>I lock down systems tighter than Fort Knox! 🏰</p>
+                </div>
+
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <h3>🤖 AI & Modern Tech</h3>
+                    <p><strong>AI Skills:</strong> LLMs, Prompt Engineering, Agentic AI</p>
+                    <p><strong>Tools:</strong> GitHub Copilot, AI-Powered Coding</p>
+                    <p>Teaching machines to think... carefully! 🤖🧠</p>
+                </div>
+
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <h3>👥 Leadership & Management</h3>
+                    <p><strong>People Skills:</strong> Team Leadership, Agile/Scrum</p>
+                    <p><strong>Certified:</strong> SAFe 5 Practitioner</p>
+                    <p>Herding developers is like herding cats... but fun! 🐱</p>
+                </div>
+
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <h3>🗄️ Databases & Systems</h3>
+                    <p><strong>Databases:</strong> MongoDB, Redis, SQL/NoSQL</p>
+                    <p><strong>Systems:</strong> Linux, Unix Internals</p>
+                    <p>I make data dance and systems sing! 💃🎵</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+        <div class="container">
+            <h2 class="section-title" style="color: #333;">My Epic Journey 🎢</h2>
+            
+            <div class="experience-timeline">
+                <div class="timeline-item" onclick="expandExperience(this)">
+                    <h3 style="color: #4a90e2;">🚀 Vice President of Technology</h3>
+                    <p style="font-weight: bold; color: #666;">Securaa • Dec 2023 - Present</p>
+                    <p>Leading the tech revolution in security orchestration and automation! 🛡️</p>
+                    <div class="hidden">
+                        <p style="margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                            <strong>What I do:</strong> Drive full-stack innovation, lead cross-functional teams, and build the future of SOC automation. Think of me as the conductor of a very technical orchestra! 🎼
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" onclick="expandExperience(this)">
+                    <h3 style="color: #4a90e2;">⚡ Engineering Lead</h3>
+                    <p style="font-weight: bold; color: #666;">Securaa • Jul 2021 - Nov 2023</p>
+                    <p>Built the foundation of our SOAR platform - it's like building a digital fortress! 🏰</p>
+                    <div class="hidden">
+                        <p style="margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                            <strong>Achievement:</strong> Transformed security operations with automation that actually works (shocking, I know!)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" onclick="expandExperience(this)">
+                    <h3 style="color: #4a90e2;">🔑 Technical Lead</h3>
+                    <p style="font-weight: bold; color: #666;">Thales eSecurity • Apr 2019 - Jul 2021</p>
+                    <p>Mastered the art of CipherTrust Manager - the Swiss Army knife of encryption! 🛠️</p>
+                    <div class="hidden">
+                        <p style="margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                            <strong>Fun fact:</strong> I help organizations manage encryption keys like a very organized keychain - but for digital stuff!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" onclick="expandExperience(this)">
+                    <h3 style="color: #4a90e2;">🔐 Senior Software Engineer</h3>
+                    <p style="font-weight: bold; color: #666;">Gemalto • Feb 2017 - Jan 2019</p>
+                    <p>Became a Hardware Security Module whisperer! 🗣️🔒</p>
+                    <div class="hidden">
+                        <p style="margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                            <strong>Specialty:</strong> FIPS 140-2 Level 3 certified systems - basically, the Fort Knox of digital security!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" onclick="expandExperience(this)">
+                    <h3 style="color: #4a90e2;">📱 The Early Days</h3>
+                    <p style="font-weight: bold; color: #666;">2011 - 2017 • Various Adventures</p>
+                    <p>Started with 4G/LTE, biometric auth, and payment terminals - the building blocks of my tech empire! 🏗️</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="container">
+            <h2 class="section-title">My Greatest Hits 🎸</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card" onclick="showProjectDetails('securaa')">
+                    <h3 style="color: #4a90e2; margin-bottom: 15px;">🛡️ Securaa SOAR Platform</h3>
+                    <p><strong>The Mission:</strong> Make security teams superhuman with automation!</p>
+                    <p style="margin-top: 10px; color: #666;">Security orchestration that actually orchestrates - like conducting a symphony of cyber defense! 🎼</p>
+                    <div class="fun-fact" style="margin-top: 15px; font-size: 0.9em;">
+                        Click to learn more! 👆
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="showProjectDetails('ciphertrust')">
+                    <h3 style="color: #4a90e2; margin-bottom: 15px;">🔑 CipherTrust Manager</h3>
+                    <p><strong>The Goal:</strong> Central command center for all things encryption!</p>
+                    <p style="margin-top: 10px; color: #666;">Think of it as the mission control for keeping secrets... secret! 🕵️‍♂️</p>
+                    <div class="fun-fact" style="margin-top: 15px; font-size: 0.9em;">
+                        Industry-leading key management! 🏆
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="showProjectDetails('hsm')">
+                    <h3 style="color: #4a90e2; margin-bottom: 15px;">🔒 SafeNet Payment HSMs</h3>
+                    <p><strong>The Challenge:</strong> Hardware-level security for payment processing!</p>
+                    <p style="margin-top: 10px; color: #666;">FIPS 140-2 Level 3 certified - basically, the Navy SEALs of crypto hardware! 💪</p>
+                    <div class="fun-fact" style="margin-top: 15px; font-size: 0.9em;">
+                        Tamper-resistant & intrusion-proof! 🛡️
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="showProjectDetails('lte')">
+                    <h3 style="color: #4a90e2; margin-bottom: 15px;">📡 LTE eNodeB Framework</h3>
+                    <p><strong>The Vision:</strong> Complete 4G network infrastructure!</p>
+                    <p style="margin-top: 10px; color: #666;">Built the backbone of modern mobile communications - you're probably using it right now! 📱</p>
+                    <div class="fun-fact" style="margin-top: 15px; font-size: 0.9em;">
+                        From small cells to macro cells! 📶
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect & Create Magic! ✨</h2>
+            
+            <div style="max-width: 600px; margin: 0 auto 40px; text-align: center;">
+                <p style="font-size: 1.3em; margin-bottom: 20px;">Ready to build something awesome together? Let's chat! 🚀</p>
+                <div class="fun-fact">
+                    I respond faster than a cached database query! ⚡
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item" onclick="window.open('mailto:vishwa0220@gmail.com')">
+                    <div style="font-size: 2em; margin-bottom: 10px;">📧</div>
+                    <h3>Email Me</h3>
+                    <p>vishwa0220@gmail.com</p>
+                    <small>I promise to reply faster than your CI/CD pipeline!</small>
+                </div>
+
+                <div class="contact-item" onclick="window.open('tel:+917838050412')">
+                    <div style="font-size: 2em; margin-bottom: 10px;">📱</div>
+                    <h3>Call Me</h3>
+                    <p>+91-7838050412</p>
+                    <small>Available for tech emergencies 24/7!</small>
+                </div>
+
+                <div class="contact-item" onclick="window.open('https://linkedin.com/in/vishwa-prakash-pandey-3406a838', '_blank')">
+                    <div style="font-size: 2em; margin-bottom: 10px;">💼</div>
+                    <h3>LinkedIn</h3>
+                    <p>Professional Network</p>
+                    <small>Let's expand our tech networks!</small>
+                </div>
+
+                <div class="contact-item">
+                    <div style="font-size: 2em; margin-bottom: 10px;">📍</div>
+                    <h3>Location</h3>
+                    <p>Noida, Uttar Pradesh</p>
+                    <small>India's Silicon Valley neighbor!</small>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; text-align: center;">
+                <button class="interactive-button" onclick="surpriseMe()" style="font-size: 1.3em; padding: 20px 40px;">
+                    🎉 Surprise Me! 🎉
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Fun interactions
+        function greetUser() {
+            const greetings = [
+                "Hello there, future collaborator! 👋",
+                "Welcome to my digital playground! 🎮",
+                "Ready to dive into some tech magic? ✨",
+                "Hey! Thanks for visiting my corner of the internet! 🌐",
+                "Greetings, fellow tech enthusiast! 🤖"
+            ];
+            const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+            alert(randomGreeting);
+        }
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function animateSkill(card) {
+            card.style.transform = 'rotate(0deg) scale(1.1)';
+            setTimeout(() => {
+                card.style.transform = card.classList.contains('skill-card') && 
+                    Array.from(card.parentNode.children).indexOf(card) % 2 === 1 ? 
+                    'rotate(2deg) scale(1)' : 'rotate(-2deg) scale(1)';
+            }, 300);
+        }
+
+        function expandExperience(item) {
+            const hiddenContent = item.querySelector('.hidden');
+            if (hiddenContent) {
+                hiddenContent.classList.toggle('hidden');
+                hiddenContent.style.display = hiddenContent.classList.contains('hidden') ? 'none' : 'block';
+            }
+        }
+
+        function showProjectDetails(project) {
+            const details = {
+                'securaa': "🛡️ Securaa SOAR Platform\n\n✨ What makes it special:\n• Full incident management lifecycle\n• Real-time collaboration tools\n• Smart automation that reduces alert fatigue\n• Custom integrations with 100+ security tools\n\n🎯 Impact: Transformed how security teams respond to threats!",
+                
+                'ciphertrust': "🔑 CipherTrust Manager\n\n✨ Key Features:\n• Enterprise-grade key lifecycle management\n• Role-based access control\n• REST API for developers\n• Multi-cloud support\n\n🎯 Achievement: Centralized encryption management for Fortune 500 companies!",
+                
+                'hsm': "🔒 SafeNet Payment HSMs\n\n✨ Security Features:\n• FIPS 140-2 Level 3 certified\n• Tamper-resistant hardware\n• PCI-HSM compliance\n• Multi-factor access control\n\n🎯 Mission: Protecting payment card data worldwide!",
+                
+                'lte': "📡 LTE eNodeB Framework\n\n✨ Technical Stack:\n• Complete Layer 2/3 functionalities\n• Support for TDD & FDD modes\n• Scalable architecture\n• Multi-vendor hardware support\n\n🎯 Legacy: Powers mobile networks you use daily!"
+            };
+            
+            alert(details[project] || "More details coming soon! 🚀");
+        }
+
+        function surpriseMe() {
+            const surprises = [
+                "🎉 Fun Fact: I've debugged code in my dreams and actually found real bugs!",
+                "🤯 Did you know? I once optimized AWS costs by 40% just by reorganizing our architecture!",
+                "🏆 Achievement Unlocked: Built a security system so secure, even I needed help getting in!",
+                "🎮 Easter Egg: My code comments are funnier than most programming memes!",
+                "🚀 Secret Skill: I can explain blockchain to my grandmother AND she understood it!",
+                "💡 Plot Twist: I actually enjoy writing documentation (yes, really!)!",
+                "🎪 Behind the Scenes: I once fixed a critical production bug while on a roller coaster!",
+                "🧙‍♂️ Magic Trick: I can make legacy code disappear... into well-structured microservices!"
+            ];
+            
+            const randomSurprise = surprises[Math.floor(Math.random() * surprises.length)];
+            
+            // Create a more fun surprise display
+            const surpriseDiv = document.createElement('div');
+            surpriseDiv.innerHTML = `
+                <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                           background: linear-gradient(45deg, #ff6b6b, #4ecdc4); color: white; 
+                           padding: 30px; border-radius: 20px; border: 3px solid #333; 
+                           font-size: 1.2em; text-align: center; z-index: 1000;
+                           animation: bounce 0.5s ease-in-out; max-width: 500px;">
+                    ${randomSurprise}
+                    <br><br>
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="background: white; color: #333; border: 2px solid #333; 
+                                   padding: 10px 20px; border-radius: 15px; cursor: pointer;
+                                   font-family: inherit; font-weight: bold;">
+                        That's Awesome! 🎉
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(surpriseDiv);
+        }
+
+        // Add some dynamic floating icons
+        function addFloatingIcon() {
+            const icons = ['💻', '🔐', '☁️', '🚀', '⚡', '🎯', '🤖', '🔧'];
+            const icon = document.createElement('div');
+            icon.className = 'tech-icon';
+            icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+            icon.style.left = Math.random() * 100 + '%';
+            icon.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            
+            document.querySelector('.floating-icons').appendChild(icon);
+            
+            // Remove the icon after animation
+            setTimeout(() => {
+                if (icon.parentNode) {
+                    icon.parentNode.removeChild(icon);
+                }
+            }, 6000);
+        }
+
+        // Add floating icons periodically
+        setInterval(addFloatingIcon, 2000);
+
+        // Smooth scrolling for all internal links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe timeline items
+            document.querySelectorAll('.timeline-item, .skill-card, .project-card').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(50px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(item);
+            });
+        });
